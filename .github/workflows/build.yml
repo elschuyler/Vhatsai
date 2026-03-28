@@ -11,11 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    # 1. Checkout your code
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v4
       
-    # 2. Set up Java 17 (required for Android Gradle Plugin 8.x)
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
@@ -23,101 +21,18 @@ jobs:
         distribution: 'temurin'
         cache: 'gradle'
         
-    # 3. Make Gradle wrapper executable
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
-    # 4. 🔍 DEBUG STEP: Verify Gradle wrapper works
-    - name: Debug - Check Gradle Wrapper
-      run: |
-        echo "🔍 Checking if gradlew exists..."
-        ls -la gradlew
-        
-        echo "🔍 Checking wrapper directory..."
-        ls -la gradle/wrapper/
-        
-        echo "🔍 Testing Gradle version..."
-        ./gradlew --version
-        
-        echo "🔍 Checking project structure..."
-        ls -la
-        ls -la app/
-        
-    # 5. 🔍 DEBUG STEP: Verify root Gradle files exist
-    - name: Debug - Check Root Gradle Files
-      run: |
-        echo "🔍 Looking for settings.gradle.kts..."
-        if [ -f "settings.gradle.kts" ]; then
-          echo "✅ settings.gradle.kts found"
-        else
-          echo "❌ settings.gradle.kts MISSING"
-        fi
-        
-        echo "🔍 Looking for build.gradle.kts (root)..."
-        if [ -f "build.gradle.kts" ]; then
-          echo "✅ build.gradle.kts (root) found"
-        else
-          echo "❌ build.gradle.kts (root) MISSING"
-        fi
-        
-        echo "🔍 Looking for gradle.properties..."
-        if [ -f "gradle.properties" ]; then
-          echo "✅ gradle.properties found"
-        else
-          echo "❌ gradle.properties MISSING"
-        fi
-        
-    # 6. Build the Debug APK
     - name: Build Debug APK
       run: ./gradlew assembleDebug --stacktrace --no-daemon
       env:
-        GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
+        GRADLE_OPTS: "-Dorg.gradle.daemon=false"
         
-    # 7. 🔍 DEBUG STEP: Find the APK after build
-    - name: Debug - Find Built APK
-      run: |
-        echo "🔍 Searching for any APK files..."
-        find . -name "*.apk" -type f
-        
-        echo "🔍 Checking expected path..."
-        if [ -f "app/build/outputs/apk/debug/app-debug.apk" ]; then
-          echo "✅ APK found at expected path!"
-          ls -lh app/build/outputs/apk/debug/app-debug.apk
-        else
-          echo "❌ APK NOT found at: app/build/outputs/apk/debug/app-debug.apk"
-          echo "📁 Listing app/build/ if it exists:"
-          if [ -d "app/build" ]; then
-            ls -la app/build/
-          else
-            echo "📁 app/build/ directory does not exist"
-          fi
-        fi
-        
-    # 8. Upload the APK as an artifact
     - name: Upload Debug APK
       uses: actions/upload-artifact@v4
       with:
         name: vhatsai-debug-apk
         path: app/build/outputs/apk/debug/app-debug.apk
         retention-days: 7
-        if-no-files-found: warn  # Don't fail the whole workflow if APK missing (for debugging)
-        
-    # 9. Build Summary (shows in workflow UI)
-    - name: Write Build Summary
-      run: |
-        echo "## 📦 Vhatsat Build Summary" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "| Item | Value |" >> $GITHUB_STEP_SUMMARY
-        echo "|------|-------|" >> $GITHUB_STEP_SUMMARY
-        echo "| Target SDK | 34 |" >> $GITHUB_STEP_SUMMARY
-        echo "| Min SDK | 24 (Android 7.0) |" >> $GITHUB_STEP_SUMMARY
-        echo "| Build Type | Debug |" >> $GITHUB_STEP_SUMMARY
-        
-        if [ -f "app/build/outputs/apk/debug/app-debug.apk" ]; then
-          SIZE=$(du -h "app/build/outputs/apk/debug/app-debug.apk" | cut -f1)
-          echo "| APK Size | $SIZE |" >> $GITHUB_STEP_SUMMARY
-          echo "| Status | ✅ Built Successfully |" >> $GITHUB_STEP_SUMMARY
-        else
-          echo "| APK Status | ❌ Not Found |" >> $GITHUB_STEP_SUMMARY
-          echo "| Next Step | Check debug logs above |" >> $GITHUB_STEP_SUMMARY
-        fi
+        if-no-files-found: error

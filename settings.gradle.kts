@@ -11,7 +11,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        // For Android-FilePicker
         maven { url = uri("https://jitpack.io") }
     }
 }

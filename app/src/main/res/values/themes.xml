@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Vhatsat" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/accent_glow</item>
-        <item name="colorPrimaryVariant">@color/bg_surface</item>
-        <item name="colorOnPrimary">@color/text_primary</item>
-        <item name="android:colorBackground">@color/bg_deep</item>
-        <item name="colorOnBackground">@color/text_primary</item>
-        <item name="colorSurface">@color/bg_surface</item>
-        <item name="colorOnSurface">@color/text_primary</item>
-        <item name="android:statusBarColor">@color/bg_deep</item>
-        <item name="android:navigationBarColor">@color/bg_deep</item>
+    <!-- Vhatsat Theme - WhatsApp Style -->
+    <style name="Theme.Vhatsai" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">#128C7E</item>
+        <item name="colorPrimaryVariant">#075E54</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">#25D366</item>
+        <item name="colorSecondaryVariant">#128C7E</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+        
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">#075E54</item>
+        
+        <!-- Background -->
+        <item name="android:windowBackground">#ECE5DD</item>
     </style>
 </resources>

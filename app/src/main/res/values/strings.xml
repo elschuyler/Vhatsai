@@ -1,8 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Vhatsai</string>
-    <string name="placeholder_status">Status (Coming Soon)</string>
-    <string name="placeholder_calls">Calls (Coming Soon)</string>
-    <string name="hint_message">Type a message…</string>
-    <string name="send">Send</string>
-    <string name="new_chat">New Chat</string>
+    <string name="app_name">Vhatsat</string>
 </resources>

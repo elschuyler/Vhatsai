@@ -1,7 +1,8 @@
-// Top-level build configuration
+// Root build.gradle.kts - Project-level configuration
 plugins {
     id("com.android.application") version "8.2.0" apply false
     id("com.android.library") version "8.2.0" apply false
     id("org.jetbrains.kotlin.android") version "1.9.20" apply false
-    id("kotlin-kapt") version "1.9.20" apply false
+    // ❌ REMOVE: id("kotlin-kapt") version "1.9.20" apply false
+    // kapt inherits version from kotlin plugin - don't declare at root
 }

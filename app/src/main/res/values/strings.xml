@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Vhatsat</string>
+    <string name="app_name">Vhatsai</string>
     <string name="placeholder_status">Status (Coming Soon)</string>
     <string name="placeholder_calls">Calls (Coming Soon)</string>
     <string name="hint_message">Type a message…</string>

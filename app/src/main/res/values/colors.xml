@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Deep-Space Theme Colors -->
-    <color name="bg_deep">#07080F</color>
-    <color name="bg_surface">#0E1020</color>
-    <color name="bg_overlay">#161830</color>
-    <color name="text_primary">#F0F2FF</color>
-    <color name="text_secondary">#7A82B0</color>
-    <color name="accent_glow">#3D6BFF</color>
-    <color name="accent_node">#C8D4FF</color>
-    <color name="bubble_user">#1A2860</color>
-    <color name="bubble_ai">#FFFFFF</color>
-    <color name="bubble_user_text">#E8EDFF</color>
-    <color name="bubble_ai_text">#111111</color>
-    
-    <!-- System -->
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="whatsapp_green">#128C7E</color>
+    <color name="whatsapp_dark_green">#075E54</color>
+    <color name="whatsapp_accent">#25D366</color>
+    <color name="whatsapp_background">#ECE5DD</color>
+    <color name="whatsapp_user_bubble">#DCF8C6</color>
+    <color name="whatsapp_ai_bubble">#FFFFFF</color>
 </resources>

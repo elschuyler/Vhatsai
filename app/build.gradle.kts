@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.elschuyler.vhatsat"
+    namespace = "com.elschuyler.vhatsai"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.elschuyler.vhatsat"
+        applicationId = "com.elschuyler.vhatsai"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

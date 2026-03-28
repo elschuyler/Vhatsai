@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Vhatsat" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/accent_glow</item>
+        <item name="colorPrimaryVariant">@color/bg_surface</item>
+        <item name="colorOnPrimary">@color/text_primary</item>
+        <item name="android:colorBackground">@color/bg_deep</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+        <item name="colorSurface">@color/bg_surface</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:statusBarColor">@color/bg_deep</item>
+        <item name="android:navigationBarColor">@color/bg_deep</item>
+    </style>
+</resources>

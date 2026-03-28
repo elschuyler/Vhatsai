@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")  // ✅ NO version - inherits from kotlin plugin
+    id("kotlin-kapt")
 }
 
 android {

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.CookieManager
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -62,7 +63,9 @@ class ChatWebViewFragment : Fragment() {
             settings.useWideViewPort = true
             settings.databaseEnabled = true
             settings.allowFileAccess = false
-            settings.thirdPartyCookiesEnabled = true
+
+            // Enable third-party cookies
+            CookieManager.getInstance().setAcceptThirdPartyCookies(this, true)
 
             webViewClient = object : WebViewClient() {
                 override fun onPageFinished(view: WebView?, url: String?) {

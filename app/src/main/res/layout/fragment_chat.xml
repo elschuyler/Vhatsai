@@ -1,98 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/bg_deep">
 
-    <!-- Top Bar -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/chatToolbar"
-        android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/bg_surface"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            
-            <TextView
-                android:id="@+id/tvAiName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="AI Name"
-                android:textColor="@color/text_primary"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-            
-            <TextView
-                android:id="@+id/tvOnlineStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="online"
-                android:textColor="@color/accent_glow"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
-
-    <!-- Messages Area (Placeholder) -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/messagesRecyclerView"
-        android:layout_width="0dp"
+        android:id="@+id/messages:layout_width="match_parent"
         android:layout_height="0dp"
-        android:clipToPadding="false"
-        android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@id/inputContainer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chatToolbar" />
+        android:layout_weight="1"
+        android:padding="8dp" />
 
-    <!-- Input Bar -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/inputContainer"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bg_surface"
+        android:orientation="horizontal"
         android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:background="@color/bg_surface">
 
         <EditText
-            android:id="@+id/etMessageInput"
+            android:id="@+id/messageInput"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_input_field"
+            android:layout_weight="1"
             android:hint="@string/hint_message"
-            android:imeOptions="actionSend"
-            android:inputType="textMultiLine"
-            android:maxLines="4"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="12dp"
             android:textColor="@color/text_primary"
             android:textColorHint="@color/text_secondary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnSend"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:background="@drawable/bg_input_field"
+            android:padding="12dp"
+            android:maxLines="4"
+            android:inputType="textMultiLine|textCapSentences" />
 
-        <ImageButton
-            android:id="@+id/btnSend"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/send"
-            android:src="@android:drawable/ic_menu_send"
-            app:layout_constraintBottom_toBottomOf="@id/etMessageInput"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/etMessageInput"
-            app:tint="@color/accent_glow" />
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/send"
+            android:backgroundTint="@color/accent_glow"
+            android:textColor="@color/white" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

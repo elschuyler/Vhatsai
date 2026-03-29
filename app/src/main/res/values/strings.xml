@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App name (appears in launcher, action bar) -->
+    <!-- App name -->
     <string name="app_name">Vhatsai</string>
 
     <!-- Chat screen -->
@@ -12,6 +12,13 @@
     <string name="status_tab">Status</string>
     <string name="calls_tab">Calls</string>
     <string name="no_chats">No chats yet.\nTap + to start one.</string>
+
+    <!-- Placeholder content for non‑functional tabs -->
+    <string name="placeholder_status">Coming soon</string>
+    <string name="placeholder_calls">Coming soon</string>
+
+    <!-- Floating action button label (accessibility) -->
+    <string name="new_chat">New chat</string>
 
     <!-- AI Tool Picker -->
     <string name="picker_title">Choose AI Tool</string>

@@ -10,14 +10,6 @@ import com.elschuyler.vhatsai.fragment.ChatWebViewFragment
 import com.elschuyler.vhatsai.fragment.InboxFragment
 import com.elschuyler.vhatsai.databinding.ActivityMainBinding
 
-/**
- * Main Activity - Hosts fragment navigation.
- * 
- * Architecture:
- * - Single Activity, Multiple Fragments
- * - InboxFragment: Chat list (WhatsApp-style)
- * - ChatWebViewFragment: Individual AI chat (WebView)
- */
 class MainActivity : AppCompatActivity() {
     
     private lateinit var binding: ActivityMainBinding
@@ -30,15 +22,11 @@ class MainActivity : AppCompatActivity() {
         
         setSupportActionBar(binding.toolbar)
         
-        // Load inbox on first launch
         if (savedInstanceState == null) {
             loadInbox()
         }
     }
     
-    /**
-     * Load the inbox/fragment_chat list fragment.
-     */
     private fun loadInbox() {
         currentWebViewFragment = null
         supportFragmentManager.beginTransaction()
@@ -46,16 +34,15 @@ class MainActivity : AppCompatActivity() {
             .commit()
         
         supportActionBar?.title = getString(R.string.app_name)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
     
     /**
-     * Open a chat with specific AI provider.
-     * 
-     * @param url The AI provider's web chat URL
-     * @param name Display name for the provider
+     * Open chat with AI provider.
+     * Destroys previous WebView first (memory management).
      */
     fun openChat(url: String, name: String) {
-        // Destroy any existing WebView first (memory management)
+        // Destroy existing WebView before opening new one
         currentWebViewFragment?.destroyWebView()
         
         val fragment = ChatWebViewFragment.newInstance(url, name)
@@ -73,15 +60,12 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                // Back button pressed
-                if (supportFragmentManager.backStackEntryCount > 0) {
-                    supportFragmentManager.popBackStack()
-                    currentWebViewFragment = null
-                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
-                    supportActionBar?.title = getString(R.string.app_name)
-                } else {
-                    loadInbox()
-                }
+                // Back button: destroy WebView, return to inbox
+                currentWebViewFragment?.destroyWebView()
+                currentWebViewFragment = null
+                supportFragmentManager.popBackStack()
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                supportActionBar?.title = getString(R.string.app_name)
                 true
             }
             R.id.action_settings -> {
@@ -107,7 +91,7 @@ class MainActivity : AppCompatActivity() {
     
     override fun onDestroy() {
         super.onDestroy()
-        // Ensure WebView is destroyed when activity is destroyed
+        // Ensure cleanup
         currentWebViewFragment?.destroyWebView()
         currentWebViewFragment = null
     }

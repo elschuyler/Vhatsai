@@ -1,6 +1,7 @@
 package com.elschuyler.vhatsai
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,11 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             loadInbox()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
     }
 
     private fun loadInbox() {

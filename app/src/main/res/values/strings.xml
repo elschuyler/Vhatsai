@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Vhatsat</string>
+    <!-- App name (appears in launcher, action bar) -->
+    <string name="app_name">Vhatsai</string>
+
+    <!-- Chat screen -->
+    <string name="hint_message">Type your message…</string>
+    <string name="send">Send</string>
+
+    <!-- Inbox / chat list -->
+    <string name="inbox_title">Chats</string>
+    <string name="status_tab">Status</string>
+    <string name="calls_tab">Calls</string>
+    <string name="no_chats">No chats yet.\nTap + to start one.</string>
+
+    <!-- AI Tool Picker -->
+    <string name="picker_title">Choose AI Tool</string>
+    <string name="confirm_selection">Confirm</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="import_config">Import Config</string>
+    <string name="export_config">Export Config</string>
+    <string name="fix_selector">Fix Selector</string>
+    <string name="disclaimer">Vhatsai automates your own web sessions.\nYou are responsible for complying with each AI service’s Terms of Service.</string>
+
+    <!-- Errors / Status -->
+    <string name="error_loading">Could not reach service</string>
+    <string name="reload">Reload Chat</string>
+    <string name="retry">Retry</string>
 </resources>

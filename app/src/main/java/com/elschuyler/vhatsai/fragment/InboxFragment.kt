@@ -11,18 +11,17 @@ import com.elschuyler.vhatsai.MainActivity
 import com.elschuyler.vhatsai.R
 
 /**
- * Inbox Fragment - Shows list of AI chat providers.
- * 
- * v1: Static list of supported AI providers.
- * v2: Dynamic list from local database + config.
+ * Inbox Fragment - Shows list of AI providers.
+ * v1: Hardcoded list (PRD §2.1: 2-3+ supported services).
  */
 class InboxFragment : Fragment() {
     
-    // Sample AI providers for v1 (PRD §2.1: 2-3 supported services)
+    // Hardcoded AI providers for v1 (add Mistral per user request)
     private val aiProviders = listOf(
         AIProvider("ChatGPT", "https://chat.openai.com", R.drawable.ic_chatgpt),
         AIProvider("Claude", "https://claude.ai", R.drawable.ic_claude),
-        AIProvider("Gemini", "https://gemini.google.com", R.drawable.ic_gemini)
+        AIProvider("Gemini", "https://gemini.google.com", R.drawable.ic_gemini),
+        AIProvider("Mistral", "https://chat.mistral.ai", R.drawable.ic_mistral)  // Added per request
     )
     
     override fun onCreateView(
@@ -58,7 +57,7 @@ class InboxFragment : Fragment() {
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             fun bind(provider: AIProvider) {
                 itemView.setOnClickListener { onClick(provider) }
-                // TODO: Bind name, icon, last message
+                // TODO: Bind name, icon, last message (v2)
             }
         }
         

@@ -6,7 +6,6 @@
     android:padding="16dp"
     android:background="?android:attr/selectableItemBackground">
 
-    <!-- No icon, just text for simplicity (avoids missing drawable) -->
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"

@@ -2,7 +2,6 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
-    // Add SQLCipher plugin if using a plugin for it, otherwise just add the library
 }
 
 android {
@@ -15,16 +14,11 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        debug {
-            isMinifyEnabled = false
-            isDebuggable = true
-            applicationIdSuffix = ".debug"
-            versionNameSuffix = "-debug"
-        }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -33,16 +27,13 @@ android {
             )
         }
     }
-    
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
-    
     buildFeatures {
         viewBinding = true
         dataBinding = true
@@ -59,25 +50,14 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.webkit:webkit:1.9.0")
 
-    // Room components
+    // Room with SQLCipher
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
+    implementation("net.zetetic:android-database-sqlcipher:4.5.5")
+    implementation("androidx.sqlite:sqlite-ktx:2.4.0")
 
-    // SQLCipher for Android (using Zetetic's library)
-    implementation("net.zetetic:android-database-sqlcipher:4.5.5@aar")
-
-    // Android Keystore for key management
-    implementation("androidx.security:security-crypto:1.1.0-alpha06")
-
-    // Navigation("androidx.navigation:navigation-fragment-ktx:2.7.6")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
-    
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-}
-
-kapt {
-    correctErrorTypes = true
 }
